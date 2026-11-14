@@ -1,0 +1,20 @@
+// ==========================================
+// FILE: package.json
+// ==========================================
+{
+  "name": "beast3-education-orchestration-engine",
+  "version": "1.0.0",
+  "description": "End-to-end education orchestration engine for New World Order Health and Wellbeing Ministries DAO LLC.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
+  }
+}
