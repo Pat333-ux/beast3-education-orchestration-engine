@@ -1,0 +1,43 @@
+// ==========================================
+// FILE: src/types/education.ts
+// ==========================================
+export interface StudentProfile {
+  id: string;
+  firstName: string;
+  lastName: string;
+  ssn: string; // Encrypted before persistence
+  dob: string;
+  email: string;
+  phone: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  academicTarget: {
+    major: string;
+    degreeType: 'ASSOCIATE' | 'BACHELOR' | 'CERTIFICATE' | 'MASTER';
+    preferredState?: string;
+    maxTuitionBudget?: number;
+  };
+  selectedSchoolCodes: string[]; // Up to 20 Federal School Codes for FAFSA
+}
+
+export interface FafsaDataPayload {
+  student: StudentProfile;
+  dependencyStatus: 'DEPENDENT' | 'INDEPENDENT';
+  contributorTaxInformation: {
+    agi: number;
+    taxesPaid: number;
+    untaxedIncome: number;
+  };
+  selectedFederalSchoolCodes: string[];
+}
+
+export interface AutomationResult {
+  step: 'ACCOUNT_SETUP' | 'FAFSA_PREFILL' | 'COLLEGE_APPLICATIONS';
+  status: 'SUCCESS' | 'PENDING' | 'FAILED';
+  details: string;
+  payloadGenerated?: Record<string, unknown>;
+}
