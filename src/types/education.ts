@@ -24,9 +24,11 @@ export interface StudentProfile {
   selectedSchoolCodes: string[]; // Up to 20 Federal School Codes for FAFSA
 }
 
+export type DependencyStatus = 'DEPENDENT' | 'INDEPENDENT';
+
 export interface FafsaDataPayload {
   student: StudentProfile;
-  dependencyStatus: 'DEPENDENT' | 'INDEPENDENT';
+  dependencyStatus: DependencyStatus;
   contributorTaxInformation: {
     agi: number;
     taxesPaid: number;
