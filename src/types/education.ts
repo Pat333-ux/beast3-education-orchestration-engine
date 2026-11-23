@@ -37,6 +37,42 @@ export interface FafsaDataPayload {
   selectedFederalSchoolCodes: string[];
 }
 
+export interface HouseholdAsset {
+  owner: 'STUDENT' | 'SPOUSE' | 'PARENT' | 'GRANDPARENT';
+  type:
+    | 'CASH_OR_SAVINGS'
+    | 'INVESTMENTS'
+    | 'RETIREMENT'
+    | 'PRIMARY_RESIDENCE'
+    | 'SMALL_BUSINESS'
+    | 'FAMILY_FARM'
+    | 'GRANDPARENT_529'
+    | 'OTHER';
+  balance: number;
+  fullTimeEquivalentEmployees?: number;
+}
+
+export interface HouseholdContributor {
+  role: 'STUDENT' | 'SPOUSE' | 'PARENT';
+  agi: number | null;
+  taxesPaid: number | null;
+  untaxedIncome: number | null;
+  assets: HouseholdAsset[];
+  consentProvided: boolean;
+  eligibleNonFiler?: boolean;
+  incomeAllowance?: number;
+}
+
+export interface ResidentHouseholdRecord {
+  householdId: string;
+  awardYear: '2026-27' | '2027-28' | string;
+  dependencyStatus: DependencyStatus;
+  student: HouseholdContributor;
+  spouse?: HouseholdContributor;
+  contributors?: HouseholdContributor[];
+  selectedFederalSchoolCodes: string[];
+}
+
 export interface AutomationResult {
   step: 'ACCOUNT_SETUP' | 'FAFSA_PREFILL' | 'COLLEGE_APPLICATIONS';
   status: 'SUCCESS' | 'PENDING' | 'FAILED';
